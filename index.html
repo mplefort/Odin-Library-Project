@@ -8,18 +8,50 @@
 
 </head>
 <body>
+    <main>
 
-    <div hidden="hidden" id="book-card-template" >
-        <div class="book-title"></div>
-        <div class="author"></div>
-        <div class="pages"></div>
-        <div class="read"></div>
-    </div>
+        <div class="header">
+            <h1>Book Library</h1>
+            <button class="login btn">Login</button>
+        </div>
 
-    <div class="card-container">
+        <div class="main">
+            <button type="button" class="btn btn-add" id="add-book-button">+ Add Book</button>
+            <div class="card-container">
+            </div>
+            
+        </div>
+        
+        <div class="footer">
+            <p>Created by Matt LeFort <a href="https://github.com/mplefort"><i class="fa-brands fa-github"></i></a></p>
+        </div>
 
-    </div>
+        <div class="modal" id="addBookModal">
+            <form action="" method ="" class="add-book-form" id="addBookForm">
+                <h2>Add new book</h2>
+                <input type="text" name="title" id="title" placeholder="Title">
+                <input type="text" name="author" id="author" placeholder="Author">
+                <input type="number" name="pages" id="pages" placeholder="Pages">
+                <div class="is-read">
+                    <label for="read">Read?</label>
+                    <input class="checkbox" type="checkbox" name="read" id="read">
+                </div>
+                <button type="submit" class="btn btn-light-green" id="addBookFormSubmit">Add Book</button>
+            </form>
+        </div>
 
-    <script src="index.js"></script>
+        <div class="overlay"></div>
+
+    </main>
+        <div hidden="hidden" id="book-card-template" >
+            <div class="book-title"></div>
+            <div class="author"></div>
+            <div class="pages"></div>
+            <div class="read"></div>
+            <button class="btn btn-read">Read</button>
+            <button class="btn btn-remove">Remove</button>
+        <script src="index.js"></script>
+    <script src="https://kit.fontawesome.com/540c9c5f33.js" crossorigin="anonym+us"></script>
+
 </body>
 </html>

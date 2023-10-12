@@ -1,40 +1,226 @@
+:root{
+  --white: #ffffff;
+  --grey: #F0EEF1;
+  --grey-darken: #666;
+  --black: #333;
+  --red: #f33d3d;
+  --light-green: #5E8264;
+  --light-red: #ff9999;
+  --border-radius: 1rem;
+  --shadow: 0 1px 14px rgba(0, 0, 0, 0.16);
+  ;
+}
+
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+@font-face {
+  font-family: "Mochiy Pop One";
+  src: url("./font/MochiyPopOne-Regular.ttf");
+}
+
+
+button,
+input {
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+  font-family: "Mochiy Pop One", "Roboto", sans-serif;
 }
 
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
-    gap: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+main {
+  /* layout */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 8fr 0.5fr;
+  height: 100vh;
+  width: 100vw;
+  background: var(--grey)
 }
 
-.book-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #fff;
-    text-align: center;
+.header {
+  /* layout */
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: var(--white);
+  box-shadow: var(--shadow);
+
 }
 
-.book-image {
-    max-width: 100%;
-    height: auto;
+.btn {
+  /* layout */
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease-in-out;
 }
 
-.book-title {
-    font-weight: bold;
-    margin: 10px 0;
+.btn:hover{
+  filter: brightness(90%);
 }
 
-.author {
-    color: #555;
+.btn-add{
+  margin: 2rem;
+  font-size: 1.5rem;
+}
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+
+.main button:hover{
+  background-color: #939393;
+  transition: all 0.3s ease-in-out;
+}
+
+.main .card-container{
+  margin: 0 2rem;
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+  gap: 1rem;
+  padding: 1rem;
+
+  /* default to adding new rows */
+  grid-auto-rows: 1fr;
+
+}
+
+.book-card{
+
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+
+  /* style */
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+
+}
+
+.btn-read {
+ align-self: stretch; 
+}
+
+
+.btn-remove {
+  align-self: stretch;
+}
+
+.btn-light-green{
+  background-color: var(--light-green);
+}
+
+.btn-light-red{
+  background-color: var(--light-red);
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  /* layout */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  border-radius: var(--border-radius);
+  /* height: 100vh; */
+  width: 33vw;
+  
+  /* style */
+  background-color: var(--grey);
+  border: #333 solid 1px;
+  text-align: center;
+
+
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal.active{
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.add-book-form {
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.is-read {
+  display: flex;
+  gap: 1rem;
+
+}
+
+input{
+  /* layout */
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: #333 solid 1px;
+}
+
+.checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: white;
+}
+
+.overlay{
+  display: none;
+
+  /* layout */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
+
+
+  /* style */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.overlay.active{
+  display: block;
 }
